@@ -7,9 +7,10 @@ soundclip.volume = 0.1;
 
 function Timer(target) {
   let count = 0;
-
+  const startTime = Date.now();
   checkTime();
   function checkTime() {
+    count = (Date.now() - startTime) / 60000;
     const score = ((count * count * 1.7) / target) * Math.random();
     if (score >= target) {
       div.innerHTML = score.toFixed(2) + " " + count.toFixed(2);
@@ -20,7 +21,6 @@ function Timer(target) {
       document.body.style.backgroundColor = "white";
       div.innerHTML = score.toFixed(2) + " " + count.toFixed(2) + "/" + target;
       document.title = count.toFixed(2) + "/" + target;
-      count += 1 / 12;
       setTimeout(checkTime, 5000);
     }
   }
