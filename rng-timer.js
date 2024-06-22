@@ -3,6 +3,7 @@ document.body.appendChild(div);
 div.style.fontSize = "32px";
 div.innerText = "0.00";
 const soundclip = new Audio("Bioshock Infinite - Objective Updated.mp3");
+soundclip.volume = 0.1;
 
 function Timer(target) {
   let count = 0;
@@ -15,11 +16,10 @@ function Timer(target) {
       document.body.style.backgroundColor = "red";
       soundclip.play();
       document.title = "Time's up!";
-      alert("Time's up!");
     } else {
       document.body.style.backgroundColor = "white";
-      div.innerHTML = score.toFixed(2) + " " + count.toFixed(2);
-      document.title = score.toFixed(2) + " " + count.toFixed(2);
+      div.innerHTML = score.toFixed(2) + " " + count.toFixed(2) + "/" + target;
+      document.title = count.toFixed(2) + "/" + target;
       count += 1 / 12;
       setTimeout(checkTime, 5000);
     }
